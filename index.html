@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sorry</title>
+  <title>To My Love</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -12,7 +12,7 @@
 
     body {
       margin: 0;
-      padding: 2rem;
+      padding: 1rem;
       background: linear-gradient(to right, #ffe9e3, #fffaf0);
       font-family: 'Crimson Text', serif;
       color: #4b2e2e;
@@ -24,30 +24,30 @@
 
     .letter {
       background: #ffffff;
-      padding: 3rem;
+      padding: 2rem;
       max-width: 700px;
       width: 100%;
-      border-radius: 18px;
-      box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
-      line-height: 1.9;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      line-height: 1.8;
       position: relative;
     }
 
     .letter h1 {
       font-family: 'Parisienne', cursive;
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       text-align: center;
       color: #c94f4f;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .letter p {
-      margin: 1.2rem 0;
-      font-size: 1.1rem;
+      margin: 1rem 0;
+      font-size: 1rem;
     }
 
     .signature {
-      margin-top: 3rem;
+      margin-top: 2rem;
       text-align: right;
       font-style: italic;
     }
@@ -56,11 +56,36 @@
       margin: 0.4rem 0;
     }
 
+    @media (max-width: 480px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+
+      .letter {
+        padding: 1.5rem;
+        border-radius: 12px;
+      }
+
+      .letter h1 {
+        font-size: 1.8rem;
+      }
+
+      .letter p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .signature {
+        font-size: 0.95rem;
+      }
+    }
+
     @media print {
       body {
         background: white;
         padding: 0;
       }
+
       .letter {
         box-shadow: none;
         border-radius: 0;
