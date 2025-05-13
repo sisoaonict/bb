@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dear A.</title>
+  <title>To My Love</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
   <style>
@@ -10,40 +10,87 @@
       box-sizing: border-box;
     }
 
-    body {
+    body, html {
       margin: 0;
-      padding: 1rem;
-      background: linear-gradient(to right, #ffe9e3, #fffaf0);
+      padding: 0;
       font-family: 'Crimson Text', serif;
-      color: #4b2e2e;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: linear-gradient(to right, #ffe9e3, #fffaf0);
       min-height: 100vh;
     }
 
-    .letter {
-      background: #ffffff;
+    #password-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #fff0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    #password-screen h2 {
+      font-family: 'Parisienne', cursive;
+      font-size: 2rem;
+      color: #c94f4f;
+      margin-bottom: 0.5rem;
+    }
+
+    #password-screen p.hint {
+      font-size: 0.95rem;
+      color: #7a5d5d;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    #password-input {
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+      border: 1px solid #c94f4f;
+      border-radius: 8px;
+      outline: none;
+      margin-bottom: 1rem;
+      width: 250px;
+      max-width: 100%;
+    }
+
+    #password-button {
+      padding: 0.5rem 1.2rem;
+      background-color: #c94f4f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #password-button:hover {
+      background-color: #a33a3a;
+    }
+
+    #letter-content {
+      display: none;
       padding: 2rem;
       max-width: 700px;
-      width: 100%;
+      margin: 2rem auto;
+      background: #ffffff;
       border-radius: 16px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      color: #4b2e2e;
       line-height: 1.8;
-      position: relative;
     }
 
-    .letter h1 {
+    #letter-content h1 {
       font-family: 'Parisienne', cursive;
-      font-size: 2.2rem;
       text-align: center;
+      font-size: 2.2rem;
       color: #c94f4f;
-      margin-bottom: 1.5rem;
-    }
-
-    .letter p {
-      margin: 1rem 0;
-      font-size: 1rem;
     }
 
     .signature {
@@ -52,25 +99,17 @@
       font-style: italic;
     }
 
-    .signature p {
-      margin: 0.4rem 0;
-    }
-
     @media (max-width: 480px) {
-      body {
-        padding: 1rem 0.5rem;
-      }
-
-      .letter {
+      #letter-content {
         padding: 1.5rem;
         border-radius: 12px;
       }
 
-      .letter h1 {
+      #letter-content h1 {
         font-size: 1.8rem;
       }
 
-      .letter p {
+      #letter-content p {
         font-size: 0.95rem;
         line-height: 1.7;
       }
@@ -79,25 +118,20 @@
         font-size: 0.95rem;
       }
     }
-
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
-
-      .letter {
-        box-shadow: none;
-        border-radius: 0;
-        padding: 1in;
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="letter">
+
+  <div id="password-screen">
+    <h2>Enter Password to Read the Letter</h2>
+    <p class="hint">password : my first name</p>
+    <input type="password" id="password-input" placeholder="Password">
+    <button id="password-button">Unlock</button>
+  </div>
+
+  <div id="letter-content">
     <h1>Dear Aye,</h1>
-    <p>
+       <p>
         Lately I have been thinking everything that happend, trying to make sense of what was and whats not, I know my actions felt like I was unbothered and I wasn’t effected by it. but it did.
     </p>
     <p>
@@ -172,10 +206,29 @@
     <p>
         But maybe this time, it’s time to bringdown my bitterness for everything that happend, And maybe this time I will properly heal from it, im sorry if I didn’t follow your timeline in mind, and maybe getting your answer is a step forward for me to learn and grow, but i still can’t say that I just want you to be a person that is a lesson to me. Neither way that maybe I will have my own life and move on from this. But I will always remember that how my heart fell for you back in 2018 and maybe that the chance I took is the real answer for what life’s to come. I will always wish the best of you and what life comes upon to you. That I wish you godspeed and until our paths cross again. And advance goodluck sa UPCAT.
     </p>
-    <p class="signature">
+       <p class="signature">
       until our paths cross again,<br>
       <strong>— A.</strong>
     </p>
+    </div>
   </div>
+
+<script>
+  const correctPassword = "alpacino"; // Change this to your actual password
+  const passwordScreen = document.getElementById("password-screen");
+  const letterContent = document.getElementById("letter-content");
+
+  document.getElementById("password-button").onclick = function () {
+    const enteredPassword = document.getElementById("password-input").value.trim().toLowerCase();
+    if (enteredPassword === correctPassword.toLowerCase()) {
+      passwordScreen.style.display = "none";
+      letterContent.style.display = "block";
+    } else {
+      alert("Incorrect password. Try again.");
+    }
+  };
+</script>
+
 </body>
 </html>
+
